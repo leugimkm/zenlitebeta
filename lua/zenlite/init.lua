@@ -102,4 +102,8 @@ function M.setup(user_opts)
   end, {})
 end
 
-return M
+return setmetatable(M, {
+  __call = function(_, opts)
+    M.setup(opts)
+  end,
+})

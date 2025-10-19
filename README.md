@@ -27,9 +27,11 @@ Using [lazy.nvim](https://github.com/folke/lazy.nvim):
 ```lua
 {
   "leugimkm/zenlite.nvim",
-  config = function()
-    require("zenlite").setup()
-  end,
+  opts = {
+    -- your configuration comes here
+    -- or leave it empty to use the default settings
+    twilight = { enable = true },
+  },
 }
 
 ```
