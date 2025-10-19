@@ -1,28 +1,38 @@
 local M = {}
 
 function M.has_twilight()
-  local ok, _ = pcall(require, "twilight")
-  return ok
+	local ok, mod = pcall(require, "twilight")
+	return ok, mod
+end
+
+function M.setup_twilight(opts)
+	local ok, twilight = M.has_twilight()
+	if not ok or not twilight or type(twilight.setup) ~= "function" then
+		vim.notify("[ZenLite] Twilight not found or invalid setup().", vim.log.levels.WARN)
+		return
+	end
+
+	if M._twilight_configured then
+		return
+	end
+
+	local success, err = pcall(function()
+		twilight.setup(opts or {})
+	end)
+
+	if not success then
+		vim.notify("[ZenLite] Failed to setup Twilight: " .. err, vim.log.levels.ERROR)
+	else
+		M._twilight_configured = true
+	end
 end
 
 function M.toggle_twilight(state)
-  if not M.has_twilight() then
-    return
-  end
-  vim.cmd(state and "TwilightEnable" or "TwilightDisable")
-end
-
-function M.toggle_diagnostics(state)
-  vim.diagnostic.enable(state)
-end
-
-function M.toggle_virtual(kind)
-  local cfg = vim.diagnostic.config()
-  if kind == "lines" then
-    vim.diagnostic.config({ virtual_lines = not cfg.virtual_lines })
-  elseif kind == "text" then
-    vim.diagnostic.config({ virtual_text = not cfg.virtual_text })
-  end
+	local ok = M.has_twilight()
+	if not ok then
+		return
+	end
+	vim.cmd(state and "TwilightEnable" or "TwilightDisable")
 end
 
 return M

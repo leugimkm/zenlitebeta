@@ -18,7 +18,10 @@ M.defaults = {
     signcolumn = { on = "yes", off = "yes:3" },
   },
   diagnostics = { enable = true },
-  twilight = { enable = true },
+  twilight = {
+    enable = true,
+    opts = {},
+  },
   custom_on = nil,
   custom_off = nil,
 }
