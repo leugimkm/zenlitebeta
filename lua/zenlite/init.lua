@@ -1,5 +1,5 @@
 local config = require("zenlite.config")
-local utils = require("zenlite.util")
+local util = require("zenlite.util")
 local plugins = require("zenlite.plugins")
 
 local M = { _active = false, _saved = {}, opts = {} }
