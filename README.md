@@ -25,15 +25,7 @@ ZenLite helps you reduce visual noise by hiding UI elements such as the statusli
 Using [lazy.nvim](https://github.com/folke/lazy.nvim):
 
 ```lua
-{
-  "leugimkm/zenlite.nvim",
-  opts = {
-    -- your configuration comes here
-    -- or leave it empty to use the default settings
-    twilight = { enable = true },
-  },
-}
-
+{ "leugimkm/zenlite.nvim", opts = {} }
 ```
 
 ## ⚙️ Configuration
@@ -41,33 +33,37 @@ Using [lazy.nvim](https://github.com/folke/lazy.nvim):
 ZenLite works out of the box, but you can customize every aspect of it:
 
 ```lua
-require("zenlite").setup({
-  keymaps = {
-    zen = "<leader>tz",          -- Toggle Zen Mode
-    all = "<leader>ta",          -- Toggle statusline + lineNr + diagnostics
-    statusline = "<leader>tb",   -- Toggle statusline
-    linenr = "<leader>tn",       -- Toggle lineNr + colorcolumn + signcolumn
-    diagnostics = "<leader>td",  -- Toggle diagnostics
-    virtuallines = "<leader>tl", -- Toggle LSP virtual lines
-    virtualtext = "<leader>tt",  -- Toggle LSP virtual text
+{
+  "leugimkm/zenlite.nvim",
+  opts = {
+    keymaps = {
+      zen = "<leader>tz",          -- Toggle Zen mode
+      all = "<leader>ta",          -- Toggle all (statusline, lineNr, diagnostics)
+      statusline = "<leader>tb",   -- Toggle statusline
+      linenr = "<leader>tn",       -- Toggle lineNr, colorcolumn and signcolumn
+      diagnostics = "<leader>td",  -- Toggle diagnostics
+      virtuallines = "<leader>tl", -- Toggle LSP virtual lines
+      virtualtext = "<leader>tt",  -- Toggle LSP virtual text
+    },
+    options = {
+      laststatus = { on = 3, off = 0 },
+      number = { on = true, off = false },
+      relativenumber = { on = true, off = false },
+      colorcolumn = { on = "80", off = "" },
+      signcolumn = { on = "yes", off = "yes:3" },
+    },
+    diagnostics = { enable = true },
+    twilight = { enable = true },
+    custom_on = function()
+      print("Entering Zen mode")
+    end,
+    custom_off = function()
+      print("Leaving Zen mode")
+    end,
   },
-  options = {
-    laststatus = { on = 3, off = 0 },
-    number = { on = true, off = false },
-    relativenumber = { on = true, off = false },
-    colorcolumn = { on = "80", off = "" },
-    signcolumn = { on = "yes", off = "yes:3" },
-  },
-  diagnostics = { enable = true },
-  twilight = { enable = true }, -- enable Twilight integration (if installed)
-  custom_on = function()
-    -- Optional: run custom logic when entering Zen mode
-  end,
-  custom_off = function()
-    -- Optional: run custom logic when leaving Zen mode
-  end,
-})
+}
 ```
+
 
 ## 🚀 Usage
 
