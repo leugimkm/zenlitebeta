@@ -20,7 +20,9 @@ M.defaults = {
   diagnostics = { enable = true },
   twilight = {
     enable = true,
-    opts = {},
+    opts = {
+      context = -1,
+    },
   },
   custom_on = nil,
   custom_off = nil,

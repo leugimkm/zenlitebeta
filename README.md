@@ -35,6 +35,7 @@ ZenLite works out of the box, but you can customize every aspect of it:
 ```lua
 {
   "leugimkm/zenlite.nvim",
+  -- default values
   opts = {
     keymaps = {
       zen = "<leader>tz",          -- Toggle Zen mode
@@ -53,7 +54,12 @@ ZenLite works out of the box, but you can customize every aspect of it:
       signcolumn = { on = "yes", off = "yes:3" },
     },
     diagnostics = { enable = true },
-    twilight = { enable = true },
+    twilight = {
+        enable = true,
+        opts =  {
+            context = -1,
+        }
+    },
     custom_on = function()
       print("Entering Zen mode")
     end,
