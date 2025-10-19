@@ -79,7 +79,7 @@ end
 
 function M.setup(user_opts)
 	M.opts = config.load(user_opts)
-	plugins.register_keymaps(M.opts, M.toggle, M.toggle_option)
+	plugins.register_keymaps(M.opts, M.toggle, M.toggle_option, M.toggle_all)
 end
 
 return M

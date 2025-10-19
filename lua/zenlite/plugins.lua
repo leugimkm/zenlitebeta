@@ -16,7 +16,7 @@ function M.toggle_twilight(state)
   end
 end
 
-function M.register_keymaps(opts, toggle_fn, toggle_option_fn)
+function M.register_keymaps(opts, toggle_fn, toggle_option_fn, toggle_all_fn)
   local km = opts.keymaps
   vim.keymap.set("n", km.zen, toggle_fn, { desc = "Toggle zen mode" })
   vim.keymap.set("n", km.all, M.toggle_all, { desc = "Toggle all (statusline, lineNr, diagnostics)" })
