@@ -105,16 +105,17 @@ Example:
 
 The following keymaps are available (and configurable via `opts.keymaps`):
 
-| Mapping        | Description                          |
-|----------------|--------------------------------------|
-| `<leader>tz`   | Toggle zen mode                      |
-| `<leader>ta`   | Toggle all UI elements               |
-| `<leader>tb`   | Toggle statusline                    |
-| `<leader>tn`   | Toggle line numbers                  |
-| `<leader>td`   | Toggle diagnostics                   |
-| `<leader>tl`   | Toggle virtual diagnostic lines      |
-| `<leader>tt`   | Toggle virtual diagnostic text       |
-
+┌───────────────┬─────────────────────────────────┐
+│ Mapping       │ Description                     │
+├───────────────┼─────────────────────────────────┤
+│ `<leader>tz`  │ Toggle zen mode                 │
+│ `<leader>ta`  │ Toggle all UI elements          │
+│ `<leader>tb`  │ Toggle statusline               │
+│ `<leader>tn`  │ Toggle line numbers             │
+│ `<leader>td`  │ Toggle diagnostics              │
+│ `<leader>tl`  │ Toggle virtual diagnostic lines │
+│ `<leader>tt`  │ Toggle virtual diagnostic text  │
+└───────────────┴─────────────────────────────────┘
 
 ==============================================================================
 
