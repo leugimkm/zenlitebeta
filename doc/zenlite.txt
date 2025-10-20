@@ -29,7 +29,7 @@ ZenLite aims to be small, modular, and configurable while keeping defaults simpl
 
 Using *lazy.nvim*:
 
->
+>lua
   {
     "leugimkm/zenlitebeta",
     dependencies = { "folke/twilight.nvim" },
@@ -53,7 +53,7 @@ ZenLite can be configured via `require("zenlite").setup()`.
 
 Defaults:
 
->
+>lua
   {
     keymaps = {
       zen = "<leader>tz",
@@ -83,7 +83,7 @@ Defaults:
 
 Example:
 
->
+>lua
   require("zenlite").setup({
     twilight = {
       enable = true,
@@ -122,7 +122,7 @@ The following keymaps are available (and configurable via `opts.keymaps`):
 
 ZenLite defines one user command:
 
->
+>vim
   :ZenModeToggle
 <
 
@@ -141,7 +141,7 @@ If enabled in your config (`opts.twilight.enable = true`), ZenLite will:
 
 Example configuration:
 
->
+>lua
   require("zenlite").setup({
     twilight = {
       enable = true,
@@ -159,7 +159,7 @@ Example configuration:
 
 ZenLite exposes the following public functions:
 
->
+>lua
   require("zenlite").setup(opts)   -- Configure keymaps and defaults
   require("zenlite").toggle()      -- Toggle zen mode
   require("zenlite").toggle_all()  -- Toggle all UI elements
