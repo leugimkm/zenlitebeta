@@ -16,7 +16,7 @@ CONTENTS                                                    *zenlite-contents*
 
 1. Introduction                                               *zenlite-intro*
 
-ZenLite is a minimal and extensible zen mode for Neovim.
+ZenLite is a minimal and configurable Zen Mode plugin for Neovim.
 It allows you to toggle UI distractions (statusline, line numbers, diagnostics)
 and integrates optionally with the plugin *twilight.nvim* for dimming inactive code.
 
@@ -117,6 +117,8 @@ The following keymaps are available (and configurable via `opts.keymaps`):
 │ `<leader>tt`  │ Toggle virtual diagnostic text  │
 └─────────────┴─────────────────────────────────┘
 
+You can override any of these in your setup() configuration.
+
 ==============================================================================
 
 5. Commands                                                 *zenlite-commands*
@@ -127,8 +129,8 @@ ZenLite defines one user command:
   :ZenModeToggle
 <
 
-Toggles zen mode on or off.
-
+Toggles zen mode on or off. Hides or restores UI elements like the statusline,
+line numbers, and diagnostics.
 
 ==============================================================================
 
