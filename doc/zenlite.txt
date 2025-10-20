@@ -56,13 +56,13 @@ Defaults:
 >lua
   {
     keymaps = {
-      zen = "<leader>tz",
-      all = "<leader>ta",
-      statusline = "<leader>tb",
-      linenr = "<leader>tn",
-      diagnostics = "<leader>td",
-      virtuallines = "<leader>tl",
-      virtualtext = "<leader>tt",
+      zen = "<leader>tz",          -- Toggle Zen mode
+      all = "<leader>ta",          -- Toggle all (statusline, lineNr, ...)
+      statusline = "<leader>tb",   -- Toggle statusline
+      linenr = "<leader>tn",       -- Toggle lineNr, colorcolumn, signcolumn
+      diagnostics = "<leader>td",  -- Toggle diagnostics
+      virtuallines = "<leader>tl", -- Toggle LSP virtual lines
+      virtualtext = "<leader>tt",  -- Toggle LSP virtual text
     },
     options = {
       laststatus = { on = 3, off = 0 },
@@ -74,7 +74,7 @@ Defaults:
     diagnostics = { enable = true },
     twilight = {
       enable = true,
-      opts = {},  -- passed to twilight.setup()
+      opts = {},       -- passed to twilight.setup()
     },
     custom_on = nil,   -- optional user function
     custom_off = nil,  -- optional user function
@@ -105,9 +105,9 @@ Example:
 
 The following keymaps are available (and configurable via `opts.keymaps`):
 
-┌───────────────┬─────────────────────────────────┐
-│ Mapping       │ Description                     │
-├───────────────┼─────────────────────────────────┤
+┌─────────────┬─────────────────────────────────┐
+│ Mapping     │ Description                     │
+├─────────────┼─────────────────────────────────┤
 │ `<leader>tz`  │ Toggle zen mode                 │
 │ `<leader>ta`  │ Toggle all UI elements          │
 │ `<leader>tb`  │ Toggle statusline               │
@@ -115,7 +115,7 @@ The following keymaps are available (and configurable via `opts.keymaps`):
 │ `<leader>td`  │ Toggle diagnostics              │
 │ `<leader>tl`  │ Toggle virtual diagnostic lines │
 │ `<leader>tt`  │ Toggle virtual diagnostic text  │
-└───────────────┴─────────────────────────────────┘
+└─────────────┴─────────────────────────────────┘
 
 ==============================================================================
 
@@ -161,9 +161,9 @@ Example configuration:
 ZenLite exposes the following public functions:
 
 >lua
-  require("zenlite").setup(opts)   -- Configure keymaps and defaults
-  require("zenlite").toggle()      -- Toggle zen mode
-  require("zenlite").toggle_all()  -- Toggle all UI elements
+  require("zenlite").setup(opts)         -- Configure keymaps and defaults
+  require("zenlite").toggle()            -- Toggle zen mode
+  require("zenlite").toggle_all()        -- Toggle all UI elements
   require("zenlite").toggle_option(name) -- Toggle individual option
 <
 
