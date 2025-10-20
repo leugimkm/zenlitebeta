@@ -1,0 +1,179 @@
+*zenlite.txt*              ZenLite — minimal zen mode for Neovim
+
+==============================================================================
+CONTENTS                                                    *zenlite-contents*
+
+  1. Introduction ................................. |zenlite-intro|
+  2. Installation ................................. |zenlite-install|
+  3. Configuration ................................ |zenlite-config|
+  4. Keymaps ...................................... |zenlite-keymaps|
+  5. Commands ..................................... |zenlite-commands|
+  6. Twilight Integration ......................... |zenlite-twilight|
+  7. API .......................................... |zenlite-api|
+  8. License ...................................... |zenlite-license|
+
+==============================================================================
+
+1. Introduction                                               *zenlite-intro*
+
+ZenLite is a minimal and extensible zen mode for Neovim.
+It allows you to toggle UI distractions (statusline, line numbers, diagnostics)
+and integrates optionally with the plugin *twilight.nvim* for dimming inactive code.
+
+ZenLite aims to be small, modular, and configurable while keeping defaults simple.
+
+
+==============================================================================
+
+2. Installation                                               *zenlite-install*
+
+Using *lazy.nvim*:
+
+>
+  {
+    "leugimkm/zenlitebeta",
+    dependencies = { "folke/twilight.nvim" },
+    opts = {
+      twilight = {
+        enable = true,
+        opts = { context = -1 },
+      },
+    },
+  }
+<
+
+Alternatively, install with *packer.nvim* or *vim-plug* as you would any plugin.
+
+
+==============================================================================
+
+3. Configuration                                              *zenlite-config*
+
+ZenLite can be configured via `require("zenlite").setup()`.
+
+Defaults:
+
+>
+  {
+    keymaps = {
+      zen = "<leader>tz",
+      all = "<leader>ta",
+      statusline = "<leader>tb",
+      linenr = "<leader>tn",
+      diagnostics = "<leader>td",
+      virtuallines = "<leader>tl",
+      virtualtext = "<leader>tt",
+    },
+    options = {
+      laststatus = { on = 3, off = 0 },
+      number = { on = true, off = false },
+      relativenumber = { on = true, off = false },
+      colorcolumn = { on = "80", off = "" },
+      signcolumn = { on = "yes", off = "yes:3" },
+    },
+    diagnostics = { enable = true },
+    twilight = {
+      enable = true,
+      opts = {},  -- passed to twilight.setup()
+    },
+    custom_on = nil,   -- optional user function
+    custom_off = nil,  -- optional user function
+  }
+<
+
+Example:
+
+>
+  require("zenlite").setup({
+    twilight = {
+      enable = true,
+      opts = { context = -1 },
+    },
+    custom_on = function()
+      vim.cmd("hi Normal guibg=#1a1a1a")
+    end,
+    custom_off = function()
+      vim.cmd("hi Normal guibg=NONE")
+    end,
+  })
+<
+
+
+==============================================================================
+
+4. Keymaps                                                   *zenlite-keymaps*
+
+The following keymaps are available (and configurable via `opts.keymaps`):
+
+| Mapping        | Description                          |
+|----------------|--------------------------------------|
+| `<leader>tz`   | Toggle zen mode                      |
+| `<leader>ta`   | Toggle all UI elements               |
+| `<leader>tb`   | Toggle statusline                    |
+| `<leader>tn`   | Toggle line numbers                  |
+| `<leader>td`   | Toggle diagnostics                   |
+| `<leader>tl`   | Toggle virtual diagnostic lines      |
+| `<leader>tt`   | Toggle virtual diagnostic text       |
+
+
+==============================================================================
+
+5. Commands                                                 *zenlite-commands*
+
+ZenLite defines one user command:
+
+>
+  :ZenModeToggle
+<
+
+Toggles zen mode on or off.
+
+
+==============================================================================
+
+6. Twilight Integration                                    *zenlite-twilight*
+
+ZenLite supports optional integration with *folke/twilight.nvim*.
+
+If enabled in your config (`opts.twilight.enable = true`), ZenLite will:
+  - Automatically call `require("twilight").setup()` with the provided opts.
+  - Toggle Twilight on enter/exit zen mode.
+
+Example configuration:
+
+>
+  require("zenlite").setup({
+    twilight = {
+      enable = true,
+      opts = {
+        context = -1,
+      },
+    },
+  })
+<
+
+
+==============================================================================
+
+7. API                                                          *zenlite-api*
+
+ZenLite exposes the following public functions:
+
+>
+  require("zenlite").setup(opts)   -- Configure keymaps and defaults
+  require("zenlite").toggle()      -- Toggle zen mode
+  require("zenlite").toggle_all()  -- Toggle all UI elements
+  require("zenlite").toggle_option(name) -- Toggle individual option
+<
+
+
+==============================================================================
+
+8. License                                                   *zenlite-license*
+
+ZenLite is released under the MIT License.
+See the LICENSE file for details.
+
+==============================================================================
+
+vim:tw=78:ts=8:ft=help:norl:
