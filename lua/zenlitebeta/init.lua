@@ -1,6 +1,6 @@
-local config = require("zenlite.config")
-local util = require("zenlite.util")
-local plugins = require("zenlite.plugins")
+local config = require("lua.zenlitebeta.config")
+local util = require("lua.zenlitebeta.util")
+local plugins = require("lua.zenlitebeta.plugins")
 
 local M = { _active = false, _saved = {}, opts = {} }
 
